@@ -1,0 +1,29 @@
+with avg_salary_per_skill as 
+(
+SELECT
+    sjd.skill_id,
+    round(avg(jpc.salary_year_avg),2) as yearly_average
+FROM
+    job_postings_fact as jpc
+INNER JOIN
+    skills_job_dim as sjd on sjd.job_id = jpc.job_id
+WHERE
+    jpc.salary_year_avg is not null AND
+    jpc.job_title_short = 'Data Analyst'
+GROUP BY
+    sjd.skill_id
+ORDER BY
+    yearly_average desc
+LIMIT 10
+)
+
+SELECT
+    sd.skills,
+    sd.type,
+    asps.yearly_average
+FROM
+    avg_salary_per_skill as asps
+INNER JOIN
+    skills_dim as sd on sd.skill_id = asps.skill_id
+ORDER BY
+    asps.yearly_average desc;

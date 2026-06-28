@@ -1,0 +1,28 @@
+
+with total_job_with_skills as
+    (
+    select
+        sjd.skill_id,
+        count(*) as skill_count
+    from
+        job_postings_fact as jpc
+    INNER JOIN
+        skills_job_dim as sjd on sjd.job_id = jpc.job_id
+    WHERE
+        jpc.job_work_from_home = TRUE AND
+        job_title_short = 'Data Analyst'
+    GROUP BY
+        sjd.skill_id
+    )
+
+select
+    sd.skill_id,
+    sd.skills,
+    tjws.skill_count
+from
+    total_job_with_skills as tjws
+INNER JOIN
+    skills_dim as sd on sd.skill_id = tjws.skill_id
+ORDER BY
+    tjws.skill_count DESc
+LIMIT 5;
