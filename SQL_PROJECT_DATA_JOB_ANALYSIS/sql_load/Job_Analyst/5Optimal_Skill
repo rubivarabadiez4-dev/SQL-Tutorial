@@ -26,142 +26,169 @@ with total_job_with_skills as
 select
     sd.skills,
     tjws.skill_count,
-    tjws.yearly_avg
+    tjws.yearly_avg,
+    round(tjws.yearly_avg / tjws.skill_count,2) as count_to_salary_ratio
 from
     total_job_with_skills as tjws
 INNER JOIN
     skills_dim as sd on sd.skill_id = tjws.skill_id
+WHERE
+  tjws.skill_count > 25
 ORDER BY
-    tjws.skill_count desc,
-    tjws.yearly_avg DESC
+    count_to_salary_ratio desc
 limit 25;
 
 /*
 [
   {
-    "skills": "sql",
-    "skill_count": "568",
-    "yearly_avg": "129190.85"
+    "skills": "dynamodb",
+    "skill_count": "27",
+    "yearly_avg": "138883.10",
+    "count_to_salary_ratio": "5143.82"
   },
   {
-    "skills": "python",
-    "skill_count": "535",
-    "yearly_avg": "132199.96"
+    "skills": "jenkins",
+    "skill_count": "26",
+    "yearly_avg": "133016.56",
+    "count_to_salary_ratio": "5116.02"
   },
   {
-    "skills": "aws",
-    "skill_count": "367",
-    "yearly_avg": "132865.28"
+    "skills": "looker",
+    "skill_count": "30",
+    "yearly_avg": "134614.43",
+    "count_to_salary_ratio": "4487.15"
   },
   {
-    "skills": "azure",
-    "skill_count": "254",
-    "yearly_avg": "129574.46"
+    "skills": "jira",
+    "skill_count": "29",
+    "yearly_avg": "129562.07",
+    "count_to_salary_ratio": "4467.66"
   },
   {
-    "skills": "spark",
-    "skill_count": "237",
-    "yearly_avg": "139837.61"
+    "skills": "mongodb",
+    "skill_count": "32",
+    "yearly_avg": "138568.83",
+    "count_to_salary_ratio": "4330.28"
   },
   {
-    "skills": "snowflake",
-    "skill_count": "202",
-    "yearly_avg": "134372.91"
+    "skills": "mongodb",
+    "skill_count": "32",
+    "yearly_avg": "138568.83",
+    "count_to_salary_ratio": "4330.28"
   },
   {
-    "skills": "airflow",
-    "skill_count": "151",
-    "yearly_avg": "138518.31"
+    "skills": "c#",
+    "skill_count": "28",
+    "yearly_avg": "112431.64",
+    "count_to_salary_ratio": "4015.42"
   },
   {
-    "skills": "redshift",
-    "skill_count": "141",
-    "yearly_avg": "132980.20"
+    "skills": "shell",
+    "skill_count": "34",
+    "yearly_avg": "135499.07",
+    "count_to_salary_ratio": "3985.27"
   },
   {
-    "skills": "java",
-    "skill_count": "139",
-    "yearly_avg": "138087.11"
+    "skills": "pandas",
+    "skill_count": "38",
+    "yearly_avg": "144656.21",
+    "count_to_salary_ratio": "3806.74"
   },
   {
-    "skills": "kafka",
-    "skill_count": "134",
-    "yearly_avg": "150549.04"
+    "skills": "javascript",
+    "skill_count": "33",
+    "yearly_avg": "121357.58",
+    "count_to_salary_ratio": "3677.50"
   },
   {
-    "skills": "databricks",
-    "skill_count": "130",
-    "yearly_avg": "130072.32"
+    "skills": "terraform",
+    "skill_count": "44",
+    "yearly_avg": "146057.28",
+    "count_to_salary_ratio": "3319.48"
   },
   {
-    "skills": "scala",
-    "skill_count": "113",
-    "yearly_avg": "141777.32"
+    "skills": "excel",
+    "skill_count": "36",
+    "yearly_avg": "115581.11",
+    "count_to_salary_ratio": "3210.59"
   },
   {
-    "skills": "hadoop",
-    "skill_count": "98",
-    "yearly_avg": "137707.03"
+    "skills": "github",
+    "skill_count": "41",
+    "yearly_avg": "121983.69",
+    "count_to_salary_ratio": "2975.21"
   },
   {
-    "skills": "nosql",
-    "skill_count": "93",
-    "yearly_avg": "136429.66"
-  },
-  {
-    "skills": "sql server",
-    "skill_count": "82",
-    "yearly_avg": "121363.91"
-  },
-  {
-    "skills": "gcp",
-    "skill_count": "76",
-    "yearly_avg": "133387.63"
-  },
-  {
-    "skills": "tableau",
-    "skill_count": "76",
-    "yearly_avg": "115246.36"
-  },
-  {
-    "skills": "git",
-    "skill_count": "74",
-    "yearly_avg": "128352.39"
-  },
-  {
-    "skills": "power bi",
-    "skill_count": "65",
-    "yearly_avg": "116948.83"
-  },
-  {
-    "skills": "pyspark",
-    "skill_count": "64",
-    "yearly_avg": "139428.36"
-  },
-  {
-    "skills": "docker",
-    "skill_count": "64",
-    "yearly_avg": "134286.25"
-  },
-  {
-    "skills": "oracle",
-    "skill_count": "63",
-    "yearly_avg": "121979.93"
-  },
-  {
-    "skills": "ssis",
-    "skill_count": "61",
-    "yearly_avg": "115272.06"
-  },
-  {
-    "skills": "r",
-    "skill_count": "60",
-    "yearly_avg": "121064.67"
+    "skills": "linux",
+    "skill_count": "44",
+    "yearly_avg": "126397.11",
+    "count_to_salary_ratio": "2872.66"
   },
   {
     "skills": "kubernetes",
     "skill_count": "56",
-    "yearly_avg": "158189.73"
+    "yearly_avg": "158189.73",
+    "count_to_salary_ratio": "2824.82"
+  },
+  {
+    "skills": "flow",
+    "skill_count": "46",
+    "yearly_avg": "123866.22",
+    "count_to_salary_ratio": "2692.74"
+  },
+  {
+    "skills": "mysql",
+    "skill_count": "53",
+    "yearly_avg": "129287.62",
+    "count_to_salary_ratio": "2439.39"
+  },
+  {
+    "skills": "bigquery",
+    "skill_count": "53",
+    "yearly_avg": "126626.73",
+    "count_to_salary_ratio": "2389.18"
+  },
+  {
+    "skills": "go",
+    "skill_count": "53",
+    "yearly_avg": "125005.94",
+    "count_to_salary_ratio": "2358.60"
+  },
+  {
+    "skills": "postgresql",
+    "skill_count": "55",
+    "yearly_avg": "121785.82",
+    "count_to_salary_ratio": "2214.29"
+  },
+  {
+    "skills": "pyspark",
+    "skill_count": "64",
+    "yearly_avg": "139428.36",
+    "count_to_salary_ratio": "2178.57"
+  },
+  {
+    "skills": "docker",
+    "skill_count": "64",
+    "yearly_avg": "134286.25",
+    "count_to_salary_ratio": "2098.22"
+  },
+  {
+    "skills": "r",
+    "skill_count": "60",
+    "yearly_avg": "121064.67",
+    "count_to_salary_ratio": "2017.74"
+  },
+  {
+    "skills": "oracle",
+    "skill_count": "63",
+    "yearly_avg": "121979.93",
+    "count_to_salary_ratio": "1936.19"
+  },
+  {
+    "skills": "ssis",
+    "skill_count": "61",
+    "yearly_avg": "115272.06",
+    "count_to_salary_ratio": "1889.71"
   }
 ]
 */
