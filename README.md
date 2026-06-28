@@ -1,7 +1,7 @@
 # I. Introduction
 This is an analysis through the job postings focusing in data engineer roles. This project explores the top paying jobs including the in-demand skills that connects to high salary paying job openings.
 
-For SQL queries used, check all using the link:
+For SQL queries used, check all the files using the link:
 [Job_Analys](/SQL_PROJECT_DATA_JOB_ANALYSIS/)
 
 # II. Background
@@ -19,7 +19,7 @@ The purpose for this analysis is to understand the best skills to learn and deve
 To analyze the data available for the job postings, I used the following tools:
 
 1. **SQL:** The core for data analysis, allowing me to query the database to obtain the needed insights.
-2. **POSTGESQL:** The chosen database management system for handling the data.
+2. **POSTGRESQL:** The chosen database management system for handling the data.
 3. **VISUAL STUDIO CODE:** My chosen software to execute the queries from the database.
 4. **GIT & GITHUB:** Used as a platform to share my project specifically SQL scripts and queries needed for the project.
 5. **CHATGPT:** To use as quick ai tool for further analyzation to the query result.
